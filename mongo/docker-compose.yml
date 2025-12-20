@@ -1,0 +1,26 @@
+version: '3.1'
+services:
+    mongo:
+        image: mongo:latest
+        container_name: mongo
+        environment:
+            MONGO_INITDB_ROOT_USERNAME: master
+            MONGO_INITDB_ROOT_PASSWORD: dsl120201Q
+        ports:
+            - 27017:27017
+        volumes:
+            - ./db/:/data/db
+    mongo-express:
+        image: mongo-express
+        container_name: mongo-express
+        environment:
+            ME_CONFIG_MONGODB_ADMINUSERNAME: master
+            ME_CONFIG_MONGODB_ADMINPASSWORD: dsl120201Q
+            ME_CONFIG_MONGODB_SERVER: mongo
+            ME_CONFIG_BASICAUTH_USERNAME: webadmin
+            ME_CONFIG_BASICAUTH_PASSWORD: dsl120201Q
+        ports:
+            - 8081:8081
+        depends_on:
+            - mongo
+        command: [ "sh", "-c", "sleep 10 && node app" ]
