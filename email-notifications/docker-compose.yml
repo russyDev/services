@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+    node:
+        image: node:latest
+        container_name: node
+        ports:
+            - "3008:4000"
+        volumes:
+            - ./:/var/www/
+            - node_modules:/var/www/node_modules
+        working_dir: /var/www/
+        command: sh -c "npm install && node index.js"
+        restart: on-failure
+    worker:
+        image: node:latest
+        container_name: worker
+        volumes:
+            - ./:/var/www/
+            - node_modules:/var/www/node_modules
+        working_dir: /var/www/
+        command: sh -c "npm install && node ./src/worker/index.js"
+        restart: on-failure
+        depends_on:
+          - node
+    redis:
+        image: redis:latest
+        container_name: redis
+        ports:
+            - "6379:6379"
+        restart: on-failure
+volumes:
+    node_modules:
