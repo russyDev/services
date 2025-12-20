@@ -16,8 +16,8 @@ export const sendMessage = async (payload) => {
             host: 'smtp.gmail.com',
             port: 587,
             auth: {
-                user: 'ruslan.kolibabchuk@gmail.com',
-                pass: 'fedo bayl qdep laab',
+                user: process.env.EMAIL_USER,
+                pass: process.env.EMAIL_PASSWORD,
             },
         });
 
