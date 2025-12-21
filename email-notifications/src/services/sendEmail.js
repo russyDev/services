@@ -1,5 +1,7 @@
 import nodemailer from "nodemailer";
 import {getTemplate} from "../template.js";
+import dotenv from "dotenv";
+dotenv.config();
 
 export const sendMessage = async (payload) => {
     const {
@@ -9,6 +11,7 @@ export const sendMessage = async (payload) => {
         subject
     } = payload;
 
+    console.log( process.env.EMAIL_USER);
     const  defaultSubject = 'Message from portfolio website';
 
     try {
