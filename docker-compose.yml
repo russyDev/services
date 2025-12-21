@@ -1,0 +1,6 @@
+version: '3.1'
+include:
+  - ./email-notifications/docker-compose.yml
+  - ./mongo/docker-compose.yml
+  - ./nginx/docker-compose.yml
+  
