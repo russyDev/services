@@ -3,4 +3,6 @@ include:
   - ./email-notifications/docker-compose.yml
   - ./mongo/docker-compose.yml
   - ./nginx/docker-compose.yml
-  
+networks:
+  web_traffic:
+    external: true

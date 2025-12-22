@@ -14,3 +14,5 @@ services:
       - ./log/nginx:/var/log/nginx
       - ./html:/usr/share/nginx/html
       - /etc/letsencrypt:/etc/letsencrypt:ro
+    networks:
+      - web_traffic
