@@ -13,4 +13,4 @@ services:
       - ./sites-enabled:/etc/nginx/sites-enabled:ro
       - ./log/nginx:/var/log/nginx
       - ./html:/usr/share/nginx/html
-      - /etc/letsencrypt/live/:/etc/letsencrypt/live/:ro
+      - /etc/letsencrypt:/etc/letsencrypt:ro
