@@ -8,6 +8,7 @@ services:
             MONGO_INITDB_ROOT_PASSWORD: dsl120201Q
         ports:
             - 127.0.0.1:27017:27017
+            - 176.98.71.139:27017:27017
         volumes:
             - ./db/:/data/db
         networks:
